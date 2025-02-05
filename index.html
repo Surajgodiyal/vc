@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stream Access</title>
+    <title>StreamX Access</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Basic CSS for layout */
@@ -14,36 +14,19 @@
             margin: 0;
             padding: 0;
         }
-        
+
         header {
             background-color: #333;
             color: white;
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
         header .logo {
             font-size: 24px;
             font-weight: bold;
-        }
-
-        header .nav-links {
-            list-style-type: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        header .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        header .search-bar input {
-            padding: 5px;
-            font-size: 16px;
         }
 
         .main-container {
@@ -140,22 +123,11 @@
 <body>
 
 <header>
-    <div class="logo">StreamAccess</div>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
-    </nav>
-    <div class="search-bar">
-        <input type="text" placeholder="Search streams...">
-    </div>
+    <div class="logo">StreamX</div>
 </header>
 
 <div class="main-container">
-    <h2>Welcome to the Stream Access Portal</h2>
+    <h2>Welcome to the StreamX Access Portal</h2>
     <p>To access the stream, please enter the number code provided.</p>
     
     <!-- Code Input Section -->
@@ -170,7 +142,7 @@
 
     <!-- Secondary Links -->
     <div class="secondary-links">
-        <a href="#" onclick="resetCode()">Forgot your code?</a>
+        <a href="forgot-your-code.html">Forgot your code?</a>
     </div>
 </div>
 
@@ -211,10 +183,6 @@
             errorMessage.textContent = "Incorrect Code. Please try again.";
             document.getElementById("code-input").classList.add("error");
         }
-    }
-
-    function resetCode() {
-        alert("Redirecting to code retrieval...");
     }
 </script>
 
