@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Access</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic CSS for layout */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header .nav-links {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        header .search-bar input {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .main-container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-box {
+            margin: 20px 0;
+        }
+
+        .input-box input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .input-box input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .input-box input.error {
+            border-color: #e74c3c;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .success-message {
+            color: #2ecc71;
+            margin-top: 10px;
+        }
+
+        .secondary-links {
+            margin-top: 20px;
+        }
+
+        .secondary-links a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .stream-preview {
+            margin-top: 30px;
+        }
+
+        .stream-preview img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .stream-preview h3 {
+            margin-top: 10px;
+        }
+
+        .stream-player {
+            margin-top: 40px;
+        }
+
+        .stream-player video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">StreamAccess</div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search streams...">
+    </div>
+</header>
+
+<div class="main-container">
+    <h2>Welcome to the Stream Access Portal</h2>
+    <p>To access the stream, please enter the number code provided.</p>
+    
+    <!-- Code Input Section -->
+    <div class="input-box">
+        <input type="text" id="code-input" placeholder="Enter code here...">
+    </div>
+    <button class="submit-button" onclick="checkCode()">Enter Stream</button>
+
+    <!-- Error or Success Messages -->
+    <p id="error-message" class="error-message"></p>
+    <p id="success-message" class="success-message"></p>
+
+    <!-- Secondary Links -->
+    <div class="secondary-links">
+        <a href="#" onclick="resetCode()">Forgot your code?</a>
+    </div>
+</div>
+
+<!-- Stream Preview (Visible after correct code) -->
+<div id="stream-preview" class="stream-preview" style="display: none;">
+    <img src="stream-thumbnail.jpg" alt="Stream Preview">
+    <h3>Stream Title</h3>
+    <p>Short description of the stream...</p>
+</div>
+
+<!-- Stream Player (Visible after correct code) -->
+<div id="stream-player" class="stream-player" style="display: none;">
+    <video controls>
+        <source src="your-video-file.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<script>
+    function checkCode() {
+        var codeInput = document.getElementById("code-input").value;
+        var errorMessage = document.getElementById("error-message");
+        var successMessage = document.getElementById("success-message");
+        
+        // Reset messages
+        errorMessage.textContent = "";
+        successMessage.textContent = "";
+
+        if (codeInput === "") {
+            errorMessage.textContent = "Please enter a code.";
+        } else if (codeInput === "123456") {  // Example correct code
+            successMessage.textContent = "You have successfully entered the code! Redirecting to the stream...";
+            // Show stream preview and player
+            document.getElementById("stream-preview").style.display = "block";
+            document.getElementById("stream-player").style.display = "block";
+            document.getElementById("error-message").style.display = "none";
+        } else {
+            errorMessage.textContent = "Incorrect Code. Please try again.";
+            document.getElementById("code-input").classList.add("error");
+        }
+    }
+
+    function resetCode() {
+        alert("Redirecting to code retrieval...");
+    }
+</script>
+
+</body>
+</html>
